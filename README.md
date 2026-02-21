@@ -1,9 +1,4 @@
-# Adversarial Grid Engine  
-## Grid Conflict
-
-A turn-based adversarial grid engine that reads an encoded game state and computes the optimal move using Minimax with Alpha-Beta pruning.
-
----
+# Grid Conflict AI Engine  
 
 ## Overview
 
