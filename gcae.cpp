@@ -783,7 +783,7 @@ Move best_move(const char *file_name) {
   int best_index = 0;
   int best_score = -INF;
   int alpha = -INF, beta = INF;
-  int depth = 15; // realistic depth;
+  int depth = 15; // realistic depth
   for (int i = 0; i < nr_of_states; ++i) {
     bool is_maximizing =
         (moves[i].type == 'p') ? false : true;
