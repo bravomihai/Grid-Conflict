@@ -722,63 +722,68 @@ static int static_eval(const game_state &gs, char root_player)
  - Depth-limited minimax with alpha-beta pruning.
  - current_player is the player to move at this node; root_player is the evaluation perspective.
  - Respects move types and stamina to decide depth progression. */
-static int minimax_search(const game_state &gs, int depth, bool is_maximizing, int H, int W, char current_player,
+static int minimax_search(const game_state &gs, int depth, char current_player, char root_player, int H, int W,
                           const std::vector<item> &items, int &alpha, int &beta)
 {
     if (depth == 0 || game_over_check(gs))
-        return static_eval(gs, current_player);
+        return static_eval(gs, root_player);
 
     std::vector<game_state> ngs;
     std::vector<Move> moves;
-    char cur = is_maximizing ? current_player : (current_player == 'A' ? 'B' : 'A');
 
-    int nStates = next_states(H, W, gs, cur, items, ngs, moves);
-    if (is_maximizing)
+    int nStates = next_states(H, W, gs, current_player, items, ngs, moves);
+
+    if (nStates == 0)
+        return static_eval(gs, root_player);
+
+    bool maximizing = (current_player == root_player);
+
+    if (maximizing)
     {
         int max_eval = -INF;
+
         for (int i = 0; i < nStates; ++i)
         {
-            int eval;
-            int player_index = (current_player == 'A') ? 0 : 1;
-            if (moves[i].type == 'p' || ngs[i].players[player_index].s == 0)
-            {
-                eval = minimax_search(ngs[i], depth - 1, false, H, W, current_player, items, alpha, beta);
-            }
-            else
-            {
-                eval = minimax_search(ngs[i], depth, true, H, W, current_player, items, alpha, beta);
-            }
-            if (eval > max_eval)
-                max_eval = eval;
-            if (eval > alpha)
-                alpha = eval;
+            char next_player = current_player;
+
+            if (moves[i].type == 'p')
+                next_player = (current_player == 'A') ? 'B' : 'A';
+
+            int next_depth = (moves[i].type == 'p') ? depth - 1 : depth;
+
+            int eval = minimax_search(ngs[i], next_depth, next_player, root_player, H, W, items, alpha, beta);
+
+            max_eval = std::max(max_eval, eval);
+            alpha = std::max(alpha, eval);
+
             if (beta <= alpha)
                 break;
         }
+
         return max_eval;
     }
     else
     {
         int min_eval = INF;
+
         for (int i = 0; i < nStates; ++i)
         {
-            int eval;
-            int opp_index = (current_player == 'A') ? 1 : 0;
-            if (moves[i].type == 'p' || ngs[i].players[opp_index].s == 0)
-            {
-                eval = minimax_search(ngs[i], depth - 1, true, H, W, current_player, items, alpha, beta);
-            }
-            else
-            {
-                eval = minimax_search(ngs[i], depth, false, H, W, current_player, items, alpha, beta);
-            }
-            if (eval < min_eval)
-                min_eval = eval;
-            if (eval < beta)
-                beta = eval;
+            char next_player = current_player;
+
+            if (moves[i].type == 'p')
+                next_player = (current_player == 'A') ? 'B' : 'A';
+
+            int next_depth = (moves[i].type == 'p') ? depth - 1 : depth;
+
+            int eval = minimax_search(ngs[i], next_depth, next_player, root_player, H, W, items, alpha, beta);
+
+            min_eval = std::min(min_eval, eval);
+            beta = std::min(beta, eval);
+
             if (beta <= alpha)
                 break;
         }
+
         return min_eval;
     }
 }
@@ -834,7 +839,7 @@ Move best_move(const char *file_name)
     {
         bool is_max = (moves[i].type == 'p') ? false : true;
         int a = alpha, b = beta;
-        int score = minimax_search(ngs[i], depth, is_max, H, W, current_player, items, a, b);
+        int score = minimax_search(ngs[i], depth, current_player, current_player, H, W, items, a, b);
         if (score > best_score)
         {
             best_score = score;

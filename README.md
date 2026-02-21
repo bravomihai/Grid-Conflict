@@ -83,7 +83,7 @@ Damage rules:
 
 - A player loses immediately if `H <= 0`.
 
-- If 10 rounds are completed, compute:
+- If 10 rounds are completed with no attacks (this is for real life gameplay, the engine searches deeper), compute:
 
   ```
   (HA + AA + DA + SA) - (HB + AB + DB + SB)
@@ -115,6 +115,8 @@ The engine operates strictly on the current state and does not store historical 
 
 ## Input File Format
 
+There are some examples in the input.txt file.
+
 ```
 H W next_player
 AH AA AD As AS
@@ -139,6 +141,20 @@ The board is **not** written as a visual matrix. Only the encoded string represe
 
 ---
 
+## Output Format
+
+```
+type torow tocol
+```
+
+Examples:
+
+```
+m A 3   -> Move to cell A3 and collect any object there
+a B 2   -> Attack entity at B2  
+p . 0   -> Pass / End current round 
+```
+
 ## Example Encoded State (3x3 Board)
 
 Visual representation:
@@ -156,29 +172,6 @@ A A1 m A2 m A3 m B1 m B2 m B3 m C1 m C2 B C3
 ```
 
 Order of elements does not matter.
-
----
-
-## Implementation Background
-
-The engine was originally developed in C as part of an academic assignment focused on:
-
-- Low-level state encoding
-- Structured data manipulation
-- Adversarial decision logic
-
-The current version is a modernized C++ adaptation that preserves the original algorithms and game logic while improving structure, safety, and maintainability.
-
-Key improvements:
-
-- Manual memory management replaced with `std::string` and `std::vector`
-- Clear separation of:
-  - State representation
-  - Move generation
-  - Evaluation
-  - Search logic
-
-The decision-making strategy remains identical to the original C implementation.
 
 ---
 
@@ -221,16 +214,25 @@ Windows:
 gcae.exe input.txt
 ```
 
-## Output Format
+## Implementation Background
 
-```
-type torow tocol
-```
+The engine was originally developed in C as part of an academic assignment focused on:
 
-Examples:
+- Low-level state encoding
+- Structured data manipulation
+- Adversarial decision logic
 
-```
-m A 3   -> Move to cell A3 and collect any object there
-a B 2   -> Attack entity at B2  
-p . 0   -> Pass / End current round 
-```
+The current version is a modernized C++ adaptation that preserves the original algorithms and game logic while improving structure, safety, and maintainability.
+
+Key improvements:
+
+- Manual memory management replaced with `std::string` and `std::vector`
+- Clear separation of:
+  - State representation
+  - Move generation
+  - Evaluation
+  - Search logic
+
+The decision-making strategy remains identical to the original C implementation.
+
+---

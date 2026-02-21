@@ -1,8 +1,34 @@
+52 99 A
+100 40 0 20 20
+100 40 0 20 20
+10
+20 5 0 0
+0 15 0 0
+0 0 15 0
+0 0 0 10
+-10 10 0 0
+30 0 0 0
+0 -10 20 0
+0 0 -5 15
+25 5 5 0
+-20 0 0 20
+A A50 m C30 m C70 m H20 m H80 m M40 m M60 m T25 m T75 m Y45 m Y55 o0 D50 o1 G10 o2 G90 o3 L50 o4 Q15 o5 Q85 o6 V50 o7 X5 o8 X95 o9 Z50 B z50
+
+# Map (52x99)
+# A at A50 (top center)
+# B at z50 (bottom center)
+# 10 monsters placed symmetrically to create vertical pressure lanes
+# 10 objects distributed on center axis and far sides (risk/reward structure)
+# Mix of positive and negative modifiers to test evaluation robustness
+# Tests maximum grid size, row encoding (A-Z, a-z), long Manhattan distances,
+# branching factor, alpha-beta pruning stability and multi-turn planning
+--------------------------------------
+
 11 11 A
 100 40 0 20 20
 100 40 0 20 20
 5
-25 0 0 0
+15 0 0 0
 0 10 0 0
 0 0 10 0
 0 0 0 5
@@ -29,6 +55,7 @@ A A6 m C4 m C8 m F3 m F9 m I4 m I8 o0 D6 o1 F6 o2 H6 o3 E2 o4 G10 B K6
 # 6 symmetric monsters create vertical lane pressure
 # 5 objects distributed: central progression and side temptations
 # Goal: test strategic positioning and multi-turn evaluation
+--------------------------------------
 
 7 7 A
 100 40 0 20 20
@@ -54,6 +81,7 @@ A A4 m C2 m C6 m E2 m E6 o0 D4 o1 B4 B G4
 # Small stamina item near A at B4 (+5 max stamina)
 # Monsters symmetric to prevent trivial paths
 # Goal: test if AI prefers moving toward center instead of passing
+--------------------------------------
 
 3 3 A
 100 40 0 20 20
@@ -76,3 +104,4 @@ A A1 m A2 m A3 m B1 m C1 m C2 B C3
 # Moving exposes A without advantage
 # Therefore ending the round (p . 0) is a rational neutral move
 # Goal: verify that the engine can choose pass when all moves are inferior
+--------------------------------------
