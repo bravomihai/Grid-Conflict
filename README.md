@@ -221,12 +221,6 @@ Windows:
 grid_conflict.exe input.txt
 ```
 
-## Run
-
-```
-./grid_conflict input.txt
-```
-
 ---
 
 ## Output Format
