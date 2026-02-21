@@ -198,13 +198,13 @@ input.txt  – Example input state
 You must compile both `gcae.cpp` and `main.cpp`.
 
 ```
-g++ -std=c++17 -O2 gcae.cpp main.cpp -o grid_conflict_ai
+g++ -std=c++17 -O2 main.cpp gcae.cpp -o gcae
 ```
 
 Windows:
 
 ```
-g++ -std=c++17 -O2 gcae.cpp main.cpp -o grid_conflict_ai.exe
+g++ -std=c++17 -O2 main.cpp gcae.cpp -o gcae.exe
 ```
 
 ---
@@ -212,13 +212,13 @@ g++ -std=c++17 -O2 gcae.cpp main.cpp -o grid_conflict_ai.exe
 ## Run
 
 ```
-./grid_conflict_ai input.txt
+./gcae input.txt
 ```
 
 Windows:
 
 ```
-grid_conflict_ai.exe input.txt
+gcae.exe input.txt
 ```
 
 ## Output Format
