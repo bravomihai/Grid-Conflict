@@ -232,5 +232,5 @@ Examples:
 ```
 m A 3   -> Move to cell A3  
 a B 2   -> Attack entity at B2  
-p . 0   -> End the current round  
+p . 0   -> Pass / End current round 
 ```

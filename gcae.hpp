@@ -34,10 +34,8 @@ void decode(int H, int W, std::vector<std::vector<char>>& board, const std::stri
 
 // Core API required by assignment
 // Reads file_name, returns the chosen Move for current player.
-// Implementation is in poe.cpp (you said you already have it).
 Move best_move(const char* file_name);
 
-// Alternative next_states signature if you want to call it from outside tests
 int next_states(int H, int W,
                 const game_state& gs,
                 char next_player,
