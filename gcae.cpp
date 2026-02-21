@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-const long long INF = std::numeric_limits<long long>::max() / 4;
+const int INF = std::numeric_limits<int>::max() / 4;
 
 //
 // Helper: map row encoding/decoding:
