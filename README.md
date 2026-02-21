@@ -185,20 +185,41 @@ The decision-making strategy remains identical to the original C implementation.
 ## Project Structure
 
 ```
-poe.cpp   – Engine implementation  
-poe.hpp   – Data structures and declarations  
-main.cpp  – Runner for testing  
+age.cpp    – Engine implementation  
+age.hpp    – Data structures and declarations  
+main.cpp   – Runner / entry point  
+input.txt  – Example input state  
 ```
 
 ---
 
 ## Build
 
+You must compile both `age.cpp` and `main.cpp`.
+
 ```
-g++ -std=c++17 -O2 poe.cpp main.cpp -o grid_conflict
+g++ -std=c++17 -O2 age.cpp main.cpp -o grid_conflict
+```
+
+If using Windows (MinGW):
+
+```
+g++ -std=c++17 -O2 age.cpp main.cpp -o grid_conflict.exe
 ```
 
 ---
+
+## Run
+
+```
+./grid_conflict input.txt
+```
+
+Windows:
+
+```
+grid_conflict.exe input.txt
+```
 
 ## Run
 
