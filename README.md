@@ -136,9 +136,9 @@ Output format:
 type torow tocol
 
 Examples:
-m A 3
-a B 2
-p . 0
+m A 3  -> Move to cell A3  
+a B 2  -> Attack the entity located at B2  
+p . 0  -> End the current round (pass turn)
 
 Project Name
 Adversarial Grid Engine
