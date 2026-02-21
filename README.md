@@ -160,15 +160,19 @@ p . 0   -> Pass / End current round
 Visual representation:
 
 ```
-A m m
-m m m
-m m B
+A ...A...
+B ...1...
+C .m...m.
+D ...0...
+E .m...m.
+F .......
+G ...B...
 ```
 
 Encoded string:
 
 ```
-A A1 m A2 m A3 m B1 m B2 m B3 m C1 m C2 B C3
+A A4 m C2 m C6 m E2 m E6 o0 D4 o1 B4 B G4
 ```
 
 Order of elements does not matter.
