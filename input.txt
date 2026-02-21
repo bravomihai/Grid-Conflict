@@ -2,21 +2,77 @@
 100 40 0 20 20
 100 40 0 20 20
 5
-15 0 0 0
+25 0 0 0
 0 10 0 0
 0 0 10 0
 0 0 0 5
 -10 5 0 0
-A A6 
-m C4 
-m C8 
-m F3 
-m F9 
-m I4 
-m I8 
-o0 D6 
-o1 F6 
-o2 H6 
-o3 E2 
-o4 G10 
-B K6
+A A6 m C4 m C8 m F3 m F9 m I4 m I8 o0 D6 o1 F6 o2 H6 o3 E2 o4 G10 B K6
+
+# Map (11x11)
+#     12345678901
+# A   .....A.....
+# B   ...........
+# C   ...m...m...
+# D   .....0.....
+# E   .3.........
+# F   ..m..1..m..
+# G   .........4.
+# H   .....2.....
+# I   ...m...m...
+# J   ...........
+# K   .....B.....
+#
+# 11x11 balanced long-range control test
+# A at A6 (top middle)
+# B at K6 (bottom middle)
+# 6 symmetric monsters create vertical lane pressure
+# 5 objects distributed: central progression and side temptations
+# Goal: test strategic positioning and multi-turn evaluation
+
+7 7 A
+100 40 0 20 20
+100 40 0 20 20
+2
+20 10 0 0
+0 0 0 5
+A A4 m C2 m C6 m E2 m E6 o0 D4 o1 B4 B G4
+
+# Map (7x7)
+#   1234567
+# A ...A...
+# B ...1...
+# C .m...m.
+# D ...0...
+# E .m...m.
+# F .......
+# G ...B...
+#
+# 7x7 balanced central control test
+# A at A4, B at G4
+# Central strong item at D4 (+20 HP, +10 A)
+# Small stamina item near A at B4 (+5 max stamina)
+# Monsters symmetric to prevent trivial paths
+# Goal: test if AI prefers moving toward center instead of passing
+
+3 3 A
+100 40 0 20 20
+100 40 0 20 20
+0
+A A1 m A2 m A3 m B1 m C1 m C2 B C3
+
+# Map (3x3)
+#   123
+# A Amm
+# B m..
+# C mmB
+#
+# 3x3 extreme constraint test
+# A at A1, B at C3
+# No objects
+# A is boxed by monsters on A2 and B1
+# Any move from A1 immediately places A adjacent to a monster
+# Attacking costs 10 stamina and does not create positional gain
+# Moving exposes A without advantage
+# Therefore ending the round (p . 0) is a rational neutral move
+# Goal: verify that the engine can choose pass when all moves are inferior
