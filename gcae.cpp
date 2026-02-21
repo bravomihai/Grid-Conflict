@@ -786,7 +786,7 @@ Move best_move(const char *file_name) {
   int depth = 15; // realistic depth;
   for (int i = 0; i < nr_of_states; ++i) {
     bool is_maximizing =
-        (moves[i].type == 'p') ? false : true; // original behavior
+        (moves[i].type == 'p') ? false : true;
     int a = alpha, b = beta;
     int score = minimax_search(ngs[i], depth, is_maximizing, H, W, next_player,
                                items, a, b);
