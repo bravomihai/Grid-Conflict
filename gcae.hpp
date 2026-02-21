@@ -1,5 +1,5 @@
-#ifndef AGE_HPP
-#define AGE_HPP
+#ifndef GCAE_HPP
+#define GCAE_HPP
 
 #include <string>
 #include <vector>
@@ -45,4 +45,4 @@ int next_states(int H, int W,
                 std::vector<game_state>& ngs,
                 std::vector<Move>& moves);
 
-#endif // AGE_HPP
+#endif // GCAE_HPP
