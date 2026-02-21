@@ -1,5 +1,5 @@
-#ifndef POE_HPP
-#define POE_HPP
+#ifndef AGE_HPP
+#define AGE_HPP
 
 #include <string>
 #include <vector>
@@ -45,4 +45,4 @@ int next_states(int H, int W,
                 std::vector<game_state>& ngs,
                 std::vector<Move>& moves);
 
-#endif // POE_HPP
+#endif // AGE_HPP
