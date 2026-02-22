@@ -1,4 +1,4 @@
-# Grid Conflict AI Engine (GCAE)
+# GridConflict AI Engine (GCAE)
 
 ## Overview
 
