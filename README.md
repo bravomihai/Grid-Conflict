@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Grid Conflict** is a two-player strategy game played on a rectangular grid.
+**GridConflict** is a two-player strategy game played on a rectangular grid.
 
 Each player (A and B) has the following attributes:
 
@@ -177,7 +177,7 @@ Order of elements does not matter.
 ## Project Structure
 
 ```
-gcae.cpp   – Grid Conflict AI engine implementation  
+gcae.cpp   – GridConflict AI engine implementation  
 gcae.hpp   – Data structures and declarations  
 main.cpp   – Entry point / runner  
 input.txt  – Example input state  
