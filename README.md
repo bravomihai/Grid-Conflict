@@ -155,6 +155,7 @@ p . 0   -> Pass / End current round
 Visual representation:
 
 ```
+  1234567
 A ...A...
 B ...1...
 C .m...m.
