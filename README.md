@@ -233,5 +233,3 @@ Key improvements:
   - Search logic
 
 The decision-making strategy remains identical to the original C implementation.
-
----
